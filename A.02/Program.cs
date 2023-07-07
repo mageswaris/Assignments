@@ -8,7 +8,7 @@ int UserGuess = 0, tries = 0;
         tries++;
         Console.WriteLine("Enter the guess:");
         bool result = int.TryParse(Console.ReadLine(), out UserGuess);
-    if (result)
+    if (result && (UserGuess>=1 && UserGuess<=100))
     {
         if (UserGuess < numberToGuess) Console.WriteLine($"{UserGuess} is Lower");
         else if (UserGuess > numberToGuess) Console.WriteLine($"{UserGuess} is higher");
