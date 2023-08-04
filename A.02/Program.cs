@@ -28,32 +28,37 @@ using System.Reflection;
 
 int lowerLimit = 1, upperLimit = 128;
 var tries=0;
-Console.WriteLine ("Type exact or low or high: ");
+Random random = new ();
 setRange (lowerLimit, upperLimit);
     
 
 void setRange (int minValue, int maxValue) {
-     bool isExact = false;
-     int guess = midValue (minValue, maxValue);
+    bool isExact = false;
+    //int guess = new Random ().Next (minValue,maxValue);
+    int guess = midValue (minValue, maxValue);
 
-        while (!isExact) {
+    while (!isExact) {
         tries++;
      
             switch (GetResponse (guess)) {
-                //GetResponse (guess).ToUpper;
-                case "exact": isExact = true; break;
-                case "low": maxValue = guess; guess = midValue (minValue, guess); break;
-                case "high": minValue = guess; guess = midValue (guess, maxValue); break;
+                case "1": isExact = true; break;
+                case "2": maxValue = guess; guess = midValue (minValue, guess); break;
+                case "3": minValue = guess; guess = midValue (guess, maxValue); break;
                 default: Console.WriteLine ("Invalid input. Please provide a number between 1 and 127"); break;
             }
 
         }
     Console.WriteLine ($"{guess} is correct with {tries} tries!");
 }
-int midValue (int minValue, int maxValue) => minValue + ((maxValue - minValue) / 2);
+
+
+
+//int midValue (int minValue, int maxValue) => minValue + ((maxValue - minValue) / 2);
+int midValue(int minValue, int maxValue) => random.Next (minValue + 1, maxValue - 1);
 
 string GetResponse (int guess) {    
-     Console.WriteLine ($"Is the number {guess} or lesser than {guess} or higher than {guess}?");
-    return Console.ReadLine ();
-
+    Console.WriteLine ("Type number 1 (exact) or 2 (low) or 3 (high): ");
+    Console.WriteLine ($"Is the number {guess} or lesser than {guess} or higher than {guess}?");
+    string response = Console.ReadLine ();
+    return response;
 }
