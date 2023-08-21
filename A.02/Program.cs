@@ -1,18 +1,17 @@
 ﻿using System;
 
-int numberToGuess = new Random().Next(1, 101);
-int UserGuess = 0, tries = 0;
-    
-    while (UserGuess != numberToGuess)
-    {
-        tries++;
-        Console.WriteLine("Enter the guess:");
-        bool result = int.TryParse(Console.ReadLine(), out UserGuess);
-    if (result)
-    {
-        if (UserGuess < numberToGuess) Console.WriteLine($"{UserGuess} is Lower");
-        else if (UserGuess > numberToGuess) Console.WriteLine($"{UserGuess} is higher");
-        else Console.WriteLine($"{UserGuess} is a correct guess after {tries} tries");
+while (true) {
+    int IntValue;
+    Console.WriteLine ("Enter a Integer value to see its HexaDecimal & Binary Conversions:");
+    bool result = int.TryParse (Console.ReadLine (), out IntValue);
+    if (result) {
+        Console.WriteLine ($"Integer Value:{IntValue}");
+        String HexaValue = IntValue.ToString ("X");
+        String BinValue = Convert.ToString (IntValue, 2);
+        Console.WriteLine ($"HexaDecimal value:{HexaValue}");
+        Console.WriteLine ($"Binary Value:{BinValue}");
+    } else {
+        Console.WriteLine ("Invalid input");
+        break;
     }
-    else Console.WriteLine("Invalid input. Please provide a number between 1 and 100");
-    }    
+}
