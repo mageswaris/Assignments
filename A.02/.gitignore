@@ -1,0 +1,16 @@
+*.pdb
+*.obj
+**/bin/
+Src/bin/
+*/.hg/
+*/.hgignore
+*/.hgtags
+*/.vs/
+**/.vs/
+*/obj/
+**/obj/
+*.cache
+*.vcxproj.user
+*.csproj.user
+**/launchSettings.json
+
